@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Giỏ Hàng</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,11 +12,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>tableOrder</h4>
+        
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            @Html.LabelFor(model => model.tenSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tenSP,"Tên Sản Phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tenSP)
                 @Html.ValidationMessageFor(model => model.tenSP)
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.hinhSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.hinhSP,"Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.hinhSP)
                 @Html.ValidationMessageFor(model => model.hinhSP)
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dongiaSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.dongiaSP,"Gía Tiền", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.dongiaSP)
                 @Html.ValidationMessageFor(model => model.dongiaSP)
@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.soluongSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.soluongSP,"Số Lượng", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.soluongSP)
                 @Html.ValidationMessageFor(model => model.soluongSP)
@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.thanhtien, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.thanhtien,"Tổng Cộng ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.thanhtien)
                 @Html.ValidationMessageFor(model => model.thanhtien)
@@ -56,23 +56,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ghichu, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ghichu,"Ghi Chú", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ghichu)
+                @Html.TextAreaFor(model => model.ghichu)
                 @Html.ValidationMessageFor(model => model.ghichu)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Thanh Toán" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tiếp tục mua hàng ", "Index")
 </div>
 
 @section Scripts {

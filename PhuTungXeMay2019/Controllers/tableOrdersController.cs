@@ -17,7 +17,8 @@ namespace PhuTungXeMay2019.Controllers
         // GET: tableOrders
         public ActionResult Index()
         {
-            return View(db.tableOrders.ToList());
+            var model = db.tableOrders;
+            return View(model.ToList());
         }
 
         // GET: tableOrders/Details/5
@@ -27,12 +28,12 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tableOrder tableOrder = db.tableOrders.Find(id);
-            if (tableOrder == null)
+            var model = db.tableOrders.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(tableOrder);
+            return View(model);
         }
 
         // GET: tableOrders/Create
@@ -46,16 +47,16 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idSP,tenSP,hinhSP,dongiaSP,soluongSP,thanhtien,ghichu")] tableOrder tableOrder)
+        public ActionResult Create( tableOrder model)
         {
             if (ModelState.IsValid)
             {
-                db.tableOrders.Add(tableOrder);
+                db.tableOrders.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tableOrder);
+            return View(model);
         }
 
         // GET: tableOrders/Edit/5
@@ -65,12 +66,12 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tableOrder tableOrder = db.tableOrders.Find(id);
-            if (tableOrder == null)
+            var model = db.tableOrders.Find(id);
+            if (model== null)
             {
                 return HttpNotFound();
             }
-            return View(tableOrder);
+            return View(model);
         }
 
         // POST: tableOrders/Edit/5

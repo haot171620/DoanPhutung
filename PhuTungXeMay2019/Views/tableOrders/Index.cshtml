@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PhuTungXeMay2019.Models.tableOrder>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Giỏ Hàng";
 }
 
 <h2>Index</h2>
@@ -9,25 +9,25 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.tenSP)
+            Tên Sản Phẩm 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.hinhSP)
+            Hình ảnh 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dongiaSP)
+           Gìa Tiền
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.soluongSP)
+           Số Lượng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.thanhtien)
+           Tổng Cộng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ghichu)
+            Ghi chú
         </th>
         <th></th>
     </tr>
@@ -35,10 +35,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.tenSP)
+            <mark>@item.tenSP</mark>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.hinhSP)
+            @item.hinhSP
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.dongiaSP)
@@ -50,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.thanhtien)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ghichu)
+           @item.ghichu.ToString()
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.idSP }) |
