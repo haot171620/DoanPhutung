@@ -1,0 +1,66 @@
+﻿@model PhuTungXeMay2019.Models.tableOrder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tableOrder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dongiaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dongiaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soluongSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soluongSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thanhtien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thanhtien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ghichu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ghichu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idSP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
