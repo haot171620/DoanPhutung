@@ -1,0 +1,108 @@
+﻿@model PhuTungXeMay2019.Models.CONTACT
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+<body>
+    <div class="slide_content_wrap">
+        <h4 class="title">VIEW CONTACT DELETE</h4>
+        <p class="description">Bạn có chắc muốn xóa?</p>
+    </div>
+    
+    <div>
+        <h4>CONTACT</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tenContact)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tenContact)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.noidungContact)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.noidungContact)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.idNguoidung)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.idNguoidung)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tenNguoidung)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tenNguoidung)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.hinhanhNguoidung)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.hinhanhNguoidung)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.gioitinh)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.gioitinh)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.diachi)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.diachi)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sdt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sdt)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ghichu)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ghichu)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-primary" /> |
+                @Html.ActionLink("Quay lại List Contact", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

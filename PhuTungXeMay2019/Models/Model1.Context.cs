@@ -31,5 +31,7 @@ namespace PhuTungXeMay2019.Models
         public virtual DbSet<Donhang> Donhangs { get; set; }
         public virtual DbSet<Lienhe> Lienhes { get; set; }
         public virtual DbSet<tableOrder> tableOrders { get; set; }
+        public virtual DbSet<CONTACT> CONTACTs { get; set; }
+        public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
     }
 }
