@@ -1,0 +1,115 @@
+﻿@model PhuTungXeMay2019.Models.CONTACT
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div class="slide_content_wrap">
+        <h4 class="title">VIEW CONTACT EDIT</h4>
+        <p class="description">Bạn có chắc muốn sửa?</p>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>CONTACT</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.idContact)
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.tenContact, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tenContact)
+                    @Html.ValidationMessageFor(model => model.tenContact)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.noidungContact, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.noidungContact)
+                    @Html.ValidationMessageFor(model => model.noidungContact)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.idNguoidung, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.idNguoidung)
+                    @Html.ValidationMessageFor(model => model.idNguoidung)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.tenNguoidung, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tenNguoidung)
+                    @Html.ValidationMessageFor(model => model.tenNguoidung)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.hinhanhNguoidung, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.hinhanhNguoidung)
+                    @Html.ValidationMessageFor(model => model.hinhanhNguoidung)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.gioitinh, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.gioitinh)
+                    @Html.ValidationMessageFor(model => model.gioitinh)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.diachi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.diachi)
+                    @Html.ValidationMessageFor(model => model.diachi)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.sdt, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.sdt)
+                    @Html.ValidationMessageFor(model => model.sdt)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.ghichu, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ghichu)
+                    @Html.ValidationMessageFor(model => model.ghichu)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lưu" class="btn btn-primary" />
+                    
+                </div>
+                <div>
+                    @Html.ActionLink("Quay lại List Contact", "Index")
+                </div>
+            </div>
+        </div>
+    }
+    
+    
+</body>
+</html>
