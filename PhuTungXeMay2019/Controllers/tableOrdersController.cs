@@ -7,29 +7,28 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhuTungXeMay2019.Models;
-using System.Transactions;
 
 namespace PhuTungXeMay2019.Controllers
 {
-    public class QuanLiSanPhamController : Controller
+    public class tableOrdersController : Controller
     {
-        CsK23T2bEntities db = new CsK23T2bEntities();
+        private CsK23T2bEntities db = new CsK23T2bEntities();
 
-        // GET: /QuanLiSanPham/
+        // GET: tableOrders
         public ActionResult Index()
         {
-            var model = db.Sanphams.ToList();
-            return View(model);
+            var model = db.tableOrders;
+            return View(model.ToList());
         }
 
-        // GET: /QuanLiSanPham/Details/5
+        // GET: tableOrders/Details/5
         public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sanpham model = db.Sanphams.Find(id);
+            var model = db.tableOrders.Find(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -37,65 +36,51 @@ namespace PhuTungXeMay2019.Controllers
             return View(model);
         }
 
-        // GET: /QuanLiSanPham/Create
+        // GET: tableOrders/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /QuanLiSanPham/Create
+        // POST: tableOrders/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Sanpham model)
+        public ActionResult Create( tableOrder model)
         {
-            ValidateSanpham(model);
             if (ModelState.IsValid)
             {
-                using (var scope = new TransactionScope())
-                {
-                    db.Sanphams.Add(model);
-                    db.SaveChanges();
-                   
-                    // accept all and persistence
-                    scope.Complete();
-                    return RedirectToAction("Index");
-                }
-               
+                db.tableOrders.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
             return View(model);
         }
-        public ActionResult Image(string id)
-        {
-            var path = Server.MapPath("~/App_Data");
-            path = System.IO.Path.Combine(path, id);
-            return File(path, "image/*");
-        }
-        private void ValidateSanpham(Sanpham model)
-        {
-            if (model.Gia <= 0)
-                ModelState.AddModelError("Gia", SanPhamError.PRICE_LESS_0);
-        }
 
-        // GET: /QuanLiSanPham/Edit/5
+        // GET: tableOrders/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = db.Sanphams.Find(id);
-            if (model == null)
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var model = db.tableOrders.Find(id);
+            if (model== null)
+            {
                 return HttpNotFound();
+            }
             return View(model);
         }
 
-        // POST: /QuanLiSanPham/Edit/5
+        // POST: tableOrders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Sanpham model)
+        public ActionResult Edit( tableOrder model)
         {
-            ValidateSanpham(model);
             if (ModelState.IsValid)
             {
                 db.Entry(model).State = EntityState.Modified;
@@ -105,28 +90,28 @@ namespace PhuTungXeMay2019.Controllers
             return View(model);
         }
 
-        // GET: /QuanLiSanPham/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: tableOrders/Delete/5
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sanpham sanpham = db.Sanphams.Find(id);
-            if (sanpham == null)
+            var model = db.tableOrders.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(sanpham);
+            return View(model);
         }
 
-        // POST: /QuanLiSanPham/Delete/5
+        // POST: tableOrders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sanpham sanpham = db.Sanphams.Find(id);
-            db.Sanphams.Remove(sanpham);
+            var model = db.tableOrders.Find(id);
+            db.tableOrders.Remove(model);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

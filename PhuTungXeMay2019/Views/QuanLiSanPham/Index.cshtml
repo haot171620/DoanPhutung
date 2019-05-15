@@ -68,12 +68,12 @@
             @item.Nhacungcap
         </td>
         <td>
-            <img src="@Url.Action("Image", new { id = item.id })" />
+            <img src="@Url.Action("Image", new { id = item.id})" />
         </td>
         <td>
-            <a href="@Url.Action("Edit", new { id = item.id })">Sua</a> |
+            <a href="@Url.Action("Edit", new { id = item.id })">Sửa</a> |
             <a href="@Url.Action("Details", new { id = item.id })">Xem</a> |
-            <a href="@Url.Action("Delete", new { id = item.id })">Xoa</a> |
+            <a href="@Url.Action("Delete", new { id = item.id })">Xóa</a> |
             <a href="@Url.Action("Create", "Cart", new { id = item.id })">Mua</a>
         </td>
     </tr>
