@@ -22,7 +22,7 @@ namespace PhuTungXeMay2019.Controllers
         }
 
         // GET: tableOrders/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -60,7 +60,7 @@ namespace PhuTungXeMay2019.Controllers
         }
 
         // GET: tableOrders/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -79,30 +79,30 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idSP,tenSP,hinhSP,dongiaSP,soluongSP,thanhtien,ghichu")] tableOrder tableOrder)
+        public ActionResult Edit( tableOrder model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tableOrder).State = EntityState.Modified;
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tableOrder);
+            return View(model);
         }
 
         // GET: tableOrders/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tableOrder tableOrder = db.tableOrders.Find(id);
-            if (tableOrder == null)
+            var model = db.tableOrders.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(tableOrder);
+            return View(model);
         }
 
         // POST: tableOrders/Delete/5
@@ -110,8 +110,8 @@ namespace PhuTungXeMay2019.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tableOrder tableOrder = db.tableOrders.Find(id);
-            db.tableOrders.Remove(tableOrder);
+            var model = db.tableOrders.Find(id);
+            db.tableOrders.Remove(model);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
