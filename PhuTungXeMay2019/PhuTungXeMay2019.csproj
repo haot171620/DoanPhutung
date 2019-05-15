@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuanLiSanPhamController.cs" />
+    <Compile Include="Controllers\tableOrdersController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +199,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sanpham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tableOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -440,6 +444,11 @@
     <Content Include="Views\QuanLiSanPham\Details.cshtml" />
     <Content Include="Views\QuanLiSanPham\Edit.cshtml" />
     <Content Include="Views\QuanLiSanPham\Index.cshtml" />
+    <Content Include="Views\tableOrders\Create.cshtml" />
+    <Content Include="Views\tableOrders\Delete.cshtml" />
+    <Content Include="Views\tableOrders\Details.cshtml" />
+    <Content Include="Views\tableOrders\Edit.cshtml" />
+    <Content Include="Views\tableOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
