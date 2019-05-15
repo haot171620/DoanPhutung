@@ -4,20 +4,20 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Chỉnh sửa sản phẩm</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Sanpham</h4>
+        
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Tensp, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tensp,"Tên sản phẩm", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Tensp)
                 @Html.ValidationMessageFor(model => model.Tensp)
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Loaisp, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Loaisp,"Loại sản phẩm", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Loaisp)
                 @Html.ValidationMessageFor(model => model.Loaisp)
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Gia, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Gia,"Giá" ,new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Gia)
                 @Html.ValidationMessageFor(model => model.Gia)
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Soluong, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Soluong,"Số lượng", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Soluong)
                 @Html.ValidationMessageFor(model => model.Soluong)
@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Xuatxu, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Xuatxu,"Xuất xứ" ,new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Xuatxu)
                 @Html.ValidationMessageFor(model => model.Xuatxu)
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Chitietsp, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Chitietsp,"Chi tiết sản phẩm", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Chitietsp)
                 @Html.ValidationMessageFor(model => model.Chitietsp)
@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nhasx, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nhasx,"Nhà sản xuất", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nhasx)
                 @Html.ValidationMessageFor(model => model.Nhasx)
@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nhacungcap, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nhacungcap,"Nhà cung cấp", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nhacungcap)
                 @Html.ValidationMessageFor(model => model.Nhacungcap)
@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Hinhanh, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Hinhanh,"Hình ảnh", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Hinhanh)
                 @Html.ValidationMessageFor(model => model.Hinhanh)
