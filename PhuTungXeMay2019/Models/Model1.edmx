@@ -60,15 +60,22 @@ warning 6002: The table/view 'CsK23T2b.dbo.Dathangtructuyen' does not have a pri
           <Property Name="SDTkh" Type="int" Nullable="false" />
           <Property Name="Emailkh" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Donhang">
+        <EntityType Name="DonHang">
           <Key>
-            <PropertyRef Name="Chitietdh" />
-            <PropertyRef Name="Giatien" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Chitietdh" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Loaihinhtt" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Madh" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Makh" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Masp" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Tinhtrangsp" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Loaihinhsp" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Thoigian" Type="datetime" Nullable="false" />
+          <Property Name="Diachigh" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Diachikh" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Sdt" Type="int" Nullable="false" />
+          <Property Name="Emailkh" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Chitietdonhang" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Giatien" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Lienhe">
@@ -122,6 +129,7 @@ warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key 
         <EntityContainer Name="CsK23T2bModelStoreContainer">
           <EntitySet Name="CONTACT" EntityType="Self.CONTACT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lienhe" EntityType="Self.Lienhe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuanTriVien" EntityType="Self.QuanTriVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sanpham" EntityType="Self.Sanpham" Schema="dbo" store:Type="Tables" />
@@ -140,13 +148,6 @@ warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key 
     [Dathangtructuyen].[SDTkh] AS [SDTkh], 
     [Dathangtructuyen].[Emailkh] AS [Emailkh]
     FROM [dbo].[Dathangtructuyen] AS [Dathangtructuyen]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Donhang" EntityType="Self.Donhang" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Donhang].[Chitietdh] AS [Chitietdh], 
-    [Donhang].[Loaihinhtt] AS [Loaihinhtt], 
-    [Donhang].[Giatien] AS [Giatien]
-    FROM [dbo].[Donhang] AS [Donhang]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -204,24 +205,15 @@ warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key 
           <Property Name="SDTkh" Type="Int32" Nullable="false" />
           <Property Name="Emailkh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="Donhang">
-          <Key>
-            <PropertyRef Name="Chitietdh" />
-            <PropertyRef Name="Giatien" />
-          </Key>
-          <Property Name="Chitietdh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Loaihinhtt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Giatien" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="CsK23T2bEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="QuanTriViens" EntityType="Self.QuanTriVien" />
           <EntitySet Name="Sanphams" EntityType="Self.Sanpham" />
           <EntitySet Name="Dathangtructuyens" EntityType="Self.Dathangtructuyen" />
-          <EntitySet Name="Donhangs" EntityType="Self.Donhang" />
           <EntitySet Name="Lienhes" EntityType="CsK23T2bModel.Lienhe" />
           <EntitySet Name="tableOrders" EntityType="CsK23T2bModel.tableOrder" />
           <EntitySet Name="CONTACTs" EntityType="CsK23T2bModel.CONTACT" />
           <EntitySet Name="CUSTOMERs" EntityType="CsK23T2bModel.CUSTOMER" />
+          <EntitySet Name="DonHangs" EntityType="CsK23T2bModel.DonHang" />
         </EntityContainer>
         <EntityType Name="Lienhe">
           <Key>
@@ -273,6 +265,24 @@ warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key 
           <Property Name="sdt" Type="Int32" />
           <Property Name="ghichu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="DonHang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Madh" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Makh" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Masp" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Tinhtrangsp" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Loaihinhsp" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Thoigian" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Diachigh" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Diachikh" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Sdt" Type="Int32" Nullable="false" />
+          <Property Name="Emailkh" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Chitietdonhang" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Giatien" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -320,15 +330,6 @@ warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key 
                 <ScalarProperty Name="Diachikh" ColumnName="Diachikh" />
                 <ScalarProperty Name="SDTkh" ColumnName="SDTkh" />
                 <ScalarProperty Name="Emailkh" ColumnName="Emailkh" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Donhangs">
-            <EntityTypeMapping TypeName="CsK23T2bModel.Donhang">
-              <MappingFragment StoreEntitySet="Donhang">
-                <ScalarProperty Name="Chitietdh" ColumnName="Chitietdh" />
-                <ScalarProperty Name="Loaihinhtt" ColumnName="Loaihinhtt" />
-                <ScalarProperty Name="Giatien" ColumnName="Giatien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -383,6 +384,25 @@ warning 6002: The table/view 'CsK23T2b.dbo.Donhang' does not have a primary key 
                 <ScalarProperty Name="hinhanhNguoidung" ColumnName="hinhanhNguoidung" />
                 <ScalarProperty Name="tenNguoidung" ColumnName="tenNguoidung" />
                 <ScalarProperty Name="idNguoidung" ColumnName="idNguoidung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DonHangs">
+            <EntityTypeMapping TypeName="CsK23T2bModel.DonHang">
+              <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="Giatien" ColumnName="Giatien" />
+                <ScalarProperty Name="Chitietdonhang" ColumnName="Chitietdonhang" />
+                <ScalarProperty Name="Emailkh" ColumnName="Emailkh" />
+                <ScalarProperty Name="Sdt" ColumnName="Sdt" />
+                <ScalarProperty Name="Diachikh" ColumnName="Diachikh" />
+                <ScalarProperty Name="Diachigh" ColumnName="Diachigh" />
+                <ScalarProperty Name="Thoigian" ColumnName="Thoigian" />
+                <ScalarProperty Name="Loaihinhsp" ColumnName="Loaihinhsp" />
+                <ScalarProperty Name="Tinhtrangsp" ColumnName="Tinhtrangsp" />
+                <ScalarProperty Name="Masp" ColumnName="Masp" />
+                <ScalarProperty Name="Makh" ColumnName="Makh" />
+                <ScalarProperty Name="Madh" ColumnName="Madh" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

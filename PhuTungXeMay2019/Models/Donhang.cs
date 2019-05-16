@@ -12,10 +12,20 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Donhang
+    public partial class DonHang
     {
-        public string Chitietdh { get; set; }
-        public string Loaihinhtt { get; set; }
+        public int Id { get; set; }
+        public string Madh { get; set; }
+        public string Makh { get; set; }
+        public string Masp { get; set; }
+        public string Tinhtrangsp { get; set; }
+        public string Loaihinhsp { get; set; }
+        public System.DateTime Thoigian { get; set; }
+        public string Diachigh { get; set; }
+        public string Diachikh { get; set; }
+        public int Sdt { get; set; }
+        public string Emailkh { get; set; }
+        public string Chitietdonhang { get; set; }
         public int Giatien { get; set; }
     }
 }

@@ -12,28 +12,28 @@ namespace PhuTungXeMay2019.Controllers
 {
     public class DonHangController : Controller
     {
-         CsK23T2bEntities db = new CsK23T2bEntities();
+        CsK23T2bEntities db = new CsK23T2bEntities();
 
         // GET: /DonHang/
         public ActionResult Index()
         {
-            var model = db.Donhangs;
-            return View(db.Donhangs.ToList());
+            var model = db.DonHangs;
+            return View(model.ToList());
         }
 
         // GET: /DonHang/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donhang donhang = db.Donhangs.Find(id);
-            if (donhang == null)
+            DonHang model = db.DonHangs.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(donhang);
+            return View(model);
         }
 
         // GET: /DonHang/Create
@@ -47,31 +47,31 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Chitietdh,Loaihinhtt,Giatien")] Donhang donhang)
+        public ActionResult Create(DonHang model)
         {
             if (ModelState.IsValid)
             {
-                db.Donhangs.Add(donhang);
+                db.DonHangs.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(donhang);
+            return View(model);
         }
 
         // GET: /DonHang/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Donhang donhang = db.Donhangs.Find(id);
-            if (donhang == null)
+            DonHang model = db.DonHangs.Find(id);
+            if (model == null)
             {
                 return HttpNotFound();
             }
-            return View(donhang);
+            return View(model);
         }
 
         // POST: /DonHang/Edit/5
@@ -79,39 +79,36 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Chitietdh,Loaihinhtt,Giatien")] Donhang donhang)
+        public ActionResult Edit(DonHang model)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(donhang).State = EntityState.Modified;
+                db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(donhang);
+            return View(model);
         }
 
         // GET: /DonHang/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Donhang donhang = db.Donhangs.Find(id);
-            if (donhang == null)
-            {
+            var model = db.DonHangs.Find(id);
+            if (model == null)
                 return HttpNotFound();
-            }
-            return View(donhang);
+            db.DonHangs.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         // POST: /DonHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Donhang donhang = db.Donhangs.Find(id);
-            db.Donhangs.Remove(donhang);
+            DonHang donhang = db.DonHangs.Find(id);
+            db.DonHangs.Remove(donhang);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
