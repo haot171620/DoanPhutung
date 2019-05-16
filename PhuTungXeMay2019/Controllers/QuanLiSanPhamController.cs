@@ -18,8 +18,8 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /QuanLiSanPham/
         public ActionResult Index()
         {
-            var model = db.Sanphams.ToList();
-            return View(model);
+            var model = db.Sanphams;
+            return View(model.ToList());
         }
 
         // GET: /QuanLiSanPham/Details/5
