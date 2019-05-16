@@ -12,11 +12,12 @@ namespace PhuTungXeMay2019.Controllers
 {
     public class DonHangController : Controller
     {
-        private CsK23T2bEntities db = new CsK23T2bEntities();
+         CsK23T2bEntities db = new CsK23T2bEntities();
 
         // GET: /DonHang/
         public ActionResult Index()
         {
+            var model = db.Donhangs;
             return View(db.Donhangs.ToList());
         }
 

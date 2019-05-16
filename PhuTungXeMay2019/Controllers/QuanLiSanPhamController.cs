@@ -16,9 +16,17 @@ namespace PhuTungXeMay2019.Controllers
         CsK23T2bEntities db = new CsK23T2bEntities();
 
         // GET: /QuanLiSanPham/
-        public ActionResult Index()
+        public ActionResult Index(String searchString)
         {
             var model = db.Sanphams;
+            var links = from l in db.Sanphams
+                        select l;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                links = links.Where(s => s.Tensp.Contains(searchString));
+            }
+ 
+ 
             return View(model.ToList());
         }
 
@@ -57,6 +65,9 @@ namespace PhuTungXeMay2019.Controllers
                 {
                     db.Sanphams.Add(model);
                     db.SaveChanges();
+                    var path = Server.MapPath("~/App_Data");
+                    path = System.IO.Path.Combine(path, model.id.ToString());
+                    Request.Files["Image"].SaveAs(path);
                    
                     // accept all and persistence
                     scope.Complete();
@@ -77,7 +88,9 @@ namespace PhuTungXeMay2019.Controllers
         {
             if (model.Gia <= 0)
                 ModelState.AddModelError("Gia", SanPhamError.PRICE_LESS_0);
+           
         }
+        
 
         // GET: /QuanLiSanPham/Edit/5
         public ActionResult Edit(int id)
