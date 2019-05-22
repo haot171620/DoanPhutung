@@ -175,9 +175,6 @@
     <Compile Include="Models\CONTACT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CUSTOMER.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Dathangtructuyen.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

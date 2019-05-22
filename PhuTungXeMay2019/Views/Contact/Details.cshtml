@@ -9,88 +9,52 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <style type="text/css">
+        .abc {
+            border: 3px solid black;
+        }
+    </style>
 </head>
 <body>
     <div class="slide_content_wrap">
-        <h4 class="title">VIEW CONTACT DETAILS</h4>
-        
+        <b style="font-size:30px">Xem Thông Tin Liên Hệ</b>
+    <hr />
     </div>
-    <div>
-        <h4>CONTACT</h4>
-    	<hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.tenContact)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.tenContact)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.noidungContact)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.noidungContact)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.idNguoidung)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.idNguoidung)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.tenNguoidung)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.tenNguoidung)
-            </dd>
-    
-            
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.gioitinh)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.gioitinh)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.diachi)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.diachi)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.sdt)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.sdt)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ghichu)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ghichu)
-            </dd>
-    
-        </dl>
+    <div class="abc">
+
+        <ul class="dl-horizontal">
+            <div style="font-size: 160%">
+                <div>
+                    <b>Họ Và Tên: </b>
+                    <a>
+                        @Html.DisplayFor(model => model.tenNguoidung)
+                    </a>
+                </div>
+                <div>
+                    <b>Tiêu Đề Liên Hệ:</b>
+                    <a>
+                        @Html.DisplayFor(model => model.tenContact)
+                    </a>
+
+                </div>
+                <div>
+                    <b>Nội Dung Liên Hệ:</b>
+                    <a>
+                        @Html.DisplayFor(model => model.noidungContact)
+                    </a>
+                </div>
+                <div>
+                    <b>Số Điện Thoại:</b>
+                    <a>
+                        @Html.DisplayFor(model => model.sdt)
+                    </a>
+                </div>
+
+            </div>
+        </ul>
     </div>
-    <p>
-        @Html.ActionLink("Xóa", "Edit", new { id = Model.idContact }) |
+    <button>
         @Html.ActionLink("Quay lại List Contact", "Index")
-    </p>
+    </button>
 </body>
 </html>
