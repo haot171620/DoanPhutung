@@ -23,7 +23,7 @@ namespace PhuTungXeMay2019.Controllers
         }
 
         // GET: /DonHang/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -83,7 +83,7 @@ namespace PhuTungXeMay2019.Controllers
         private void ValidateDonhang(Donhang model)
         {
             if (model.Gia <= 0)
-                ModelState.AddModelError("Price", VLTError.PRICE_LESS_0);
+                ModelState.AddModelError("Price", SanPhamError.PRICE_LESS_0);
         }
 
 
