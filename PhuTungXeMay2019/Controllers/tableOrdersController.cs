@@ -17,7 +17,7 @@ namespace PhuTungXeMay2019.Controllers
         // GET: tableOrders
         public ActionResult Index()
         {
-            var model = db.tableOrders;
+            var model = db.Dathangs;
             return View(model.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var model = db.tableOrders.Find(id);
+            var model = db.Dathangs.Find(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -47,11 +47,11 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( tableOrder model)
+        public ActionResult Create(Dathang model)
         {
             if (ModelState.IsValid)
             {
-                db.tableOrders.Add(model);
+                db.Dathangs.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var model = db.tableOrders.Find(id);
+            var model = db.Dathangs.Find(id);
             if (model== null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( tableOrder model)
+        public ActionResult Edit(Dathang model)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var model = db.tableOrders.Find(id);
+            var model = db.Dathangs.Find(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace PhuTungXeMay2019.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var model = db.tableOrders.Find(id);
-            db.tableOrders.Remove(model);
+            var model = db.Dathangs.Find(id);
+            db.Dathangs.Remove(model);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

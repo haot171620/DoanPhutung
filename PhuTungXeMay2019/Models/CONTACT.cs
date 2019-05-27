@@ -12,9 +12,9 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CONTACT
+    public partial class Contact
     {
-        public int idContact { get; set; }
+        public int Idcontact { get; set; }
         public string tenNguoidung { get; set; }
         public string tenContact { get; set; }
         public string noidungContact { get; set; }

@@ -12,22 +12,24 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SanPham
+    public partial class Dathang
     {
-        public SanPham()
+        public Dathang()
         {
-            this.Dathangs = new HashSet<Dathang>();
+            this.Donhangs = new HashSet<Donhang>();
         }
     
-        public int Idsp { get; set; }
+        public int Iddonhang { get; set; }
+        public Nullable<int> Idsp { get; set; }
+        public Nullable<int> Idkhachhang { get; set; }
         public string Tensp { get; set; }
-        public string Loaisp { get; set; }
         public Nullable<int> Soluong { get; set; }
-        public string Xuatxu { get; set; }
-        public Nullable<int> Giatien { get; set; }
-        public string Chitiet { get; set; }
-        public string Hinhanh { get; set; }
+        public Nullable<System.DateTime> Ngaymua { get; set; }
+        public string Diachi { get; set; }
+        public string Email { get; set; }
     
-        public virtual ICollection<Dathang> Dathangs { get; set; }
+        public virtual Khachhang Khachhang { get; set; }
+        public virtual SanPham SanPham { get; set; }
+        public virtual ICollection<Donhang> Donhangs { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class QuanTriVien
+    public partial class sysdiagram
     {
-        public int id { get; set; }
-        public string Ho { get; set; }
-        public string Ten { get; set; }
-        public int SDT { get; set; }
-        public string Chucvu { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -18,8 +18,8 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /QuanLiSanPham/
         public ActionResult Index(String searchString)
         {
-            var model = db.Sanphams;
-            var links = from l in db.Sanphams
+            var model = db.SanPhams;
+            var links = from l in db.SanPhams
                         select l;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -37,7 +37,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sanpham model = db.Sanphams.Find(id);
+            SanPham model = db.SanPhams.Find(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -56,17 +56,17 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Sanpham model)
+        public ActionResult Create(SanPham model)
         {
             ValidateSanpham(model);
             if (ModelState.IsValid)
             {
                 using (var scope = new TransactionScope())
                 {
-                    db.Sanphams.Add(model);
+                    db.SanPhams.Add(model);
                     db.SaveChanges();
                     var path = Server.MapPath("~/App_Data");
-                    path = System.IO.Path.Combine(path, model.id.ToString());
+                    path = System.IO.Path.Combine(path, model.Idsp.ToString());
                     Request.Files["Image"].SaveAs(path);
                    
                     // accept all and persistence
@@ -84,9 +84,9 @@ namespace PhuTungXeMay2019.Controllers
             path = System.IO.Path.Combine(path, id);
             return File(path, "image/*");
         }
-        private void ValidateSanpham(Sanpham model)
+        private void ValidateSanpham(SanPham model)
         {
-            if (model.Gia <= 0)
+            if (model.Giatien <= 0)
                 ModelState.AddModelError("Gia", SanPhamError.PRICE_LESS_0);
            
         }
@@ -95,7 +95,7 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /QuanLiSanPham/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = db.Sanphams.Find(id);
+            var model = db.SanPhams.Find(id);
             if (model == null)
                 return HttpNotFound();
             return View(model);
@@ -106,7 +106,7 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Sanpham model)
+        public ActionResult Edit(SanPham model)
         {
             ValidateSanpham(model);
             if (ModelState.IsValid)
@@ -119,18 +119,14 @@ namespace PhuTungXeMay2019.Controllers
         }
 
         // GET: /QuanLiSanPham/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sanpham sanpham = db.Sanphams.Find(id);
-            if (sanpham == null)
-            {
+            var model = db.SanPhams.Find(id);
+            if (model == null)
                 return HttpNotFound();
-            }
-            return View(sanpham);
+            db.SanPhams.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: /QuanLiSanPham/Delete/5
@@ -138,10 +134,15 @@ namespace PhuTungXeMay2019.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Sanpham sanpham = db.Sanphams.Find(id);
-            db.Sanphams.Remove(sanpham);
+            SanPham sanpham = db.SanPhams.Find(id);
+            db.SanPhams.Remove(sanpham);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult Search(string Search)
+        {
+            var model = db.SanPhams.ToList().Where(x => x.Tensp.Contains(Search));
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)

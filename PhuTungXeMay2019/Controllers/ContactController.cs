@@ -17,7 +17,7 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /Contact/
         public ActionResult Index()
         {
-            return View(db.CONTACTs.ToList());
+            return View(db.Contacts.ToList());
         }
 
         // GET: /Contact/Details/5
@@ -27,7 +27,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONTACT contact = db.CONTACTs.Find(id);
+            Contact contact = db.Contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="idContact,tenContact,noidungContact,idNguoidung,tenNguoidung,hinhanhNguoidung,gioitinh,diachi,sdt,ghichu")] CONTACT contact)
+        public ActionResult Create([Bind(Include="idContact,tenContact,noidungContact,idNguoidung,tenNguoidung,hinhanhNguoidung,gioitinh,diachi,sdt,ghichu")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                db.CONTACTs.Add(contact);
+                db.Contacts.Add(contact);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONTACT contact = db.CONTACTs.Find(id);
+            Contact contact = db.Contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="idContact,tenContact,noidungContact,idNguoidung,tenNguoidung,hinhanhNguoidung,gioitinh,diachi,sdt,ghichu")] CONTACT contact)
+        public ActionResult Edit([Bind(Include="idContact,tenContact,noidungContact,idNguoidung,tenNguoidung,hinhanhNguoidung,gioitinh,diachi,sdt,ghichu")] Contact contact)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONTACT contact = db.CONTACTs.Find(id);
+            Contact contact = db.Contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace PhuTungXeMay2019.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CONTACT contact = db.CONTACTs.Find(id);
-            db.CONTACTs.Remove(contact);
+            Contact contact = db.Contacts.Find(id);
+            db.Contacts.Remove(contact);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

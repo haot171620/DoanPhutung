@@ -19,9 +19,9 @@ namespace PhuTungXeMay2019.Tests
             var result = controller.Index();
             var view = result as ViewResult;
             Assert.IsNotNull(view);
-            var model = view.Model as List<CONTACT>;
+            var model = view.Model as List<Contact>;
             Assert.IsNotNull(model);
-            Assert.AreEqual(db.CONTACTs.Count(), model.Count);
+            Assert.AreEqual(db.Contacts.Count(), model.Count);
         }
         [TestMethod]
         public void TestCreateG()
@@ -34,18 +34,18 @@ namespace PhuTungXeMay2019.Tests
         public void TestEditG()
         {
             var db = new CsK23T2bEntities();
-            var item = db.CONTACTs.First();
+            var item = db.Contacts.First();
             var controller = new ContactController();
 
             var result = controller.Edit(0);
             Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
 
-            result = controller.Edit(item.idContact);
+            result = controller.Edit(item.Idcontact);
             var view = result as ViewResult;
             Assert.IsNotNull(view);
-            var model = view.Model as CONTACT;
+            var model = view.Model as Contact;
             Assert.IsNotNull(model);
-            Assert.AreEqual(item.idContact, model.idContact);
+            Assert.AreEqual(item.Idcontact, model.Idcontact);
             Assert.AreEqual(item.tenContact, model.tenContact);
             Assert.AreEqual(item.tenNguoidung, model.tenNguoidung);
             Assert.AreEqual(item.noidungContact, model.noidungContact);

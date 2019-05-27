@@ -25,12 +25,12 @@ namespace PhuTungXeMay2019.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<QuanTriVien> QuanTriViens { get; set; }
-        public virtual DbSet<Sanpham> Sanphams { get; set; }
-        public virtual DbSet<Dathangtructuyen> Dathangtructuyens { get; set; }
-        public virtual DbSet<Lienhe> Lienhes { get; set; }
-        public virtual DbSet<tableOrder> tableOrders { get; set; }
-        public virtual DbSet<DonHang> DonHangs { get; set; }
-        public virtual DbSet<CONTACT> CONTACTs { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Dathang> Dathangs { get; set; }
+        public virtual DbSet<Donhang> Donhangs { get; set; }
+        public virtual DbSet<Khachhang> Khachhangs { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
     }
 }

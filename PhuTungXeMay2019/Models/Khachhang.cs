@@ -12,14 +12,19 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tableOrder
+    public partial class Khachhang
     {
-        public int idSP { get; set; }
-        public string tenSP { get; set; }
-        public byte[] hinhSP { get; set; }
-        public Nullable<int> dongiaSP { get; set; }
-        public Nullable<int> soluongSP { get; set; }
-        public Nullable<int> thanhtien { get; set; }
-        public string ghichu { get; set; }
+        public Khachhang()
+        {
+            this.Dathangs = new HashSet<Dathang>();
+        }
+    
+        public int Idkhachhang { get; set; }
+        public string Email { get; set; }
+        public string Tendangnhap { get; set; }
+        public string Matkhau { get; set; }
+        public string Diachi { get; set; }
+    
+        public virtual ICollection<Dathang> Dathangs { get; set; }
     }
 }

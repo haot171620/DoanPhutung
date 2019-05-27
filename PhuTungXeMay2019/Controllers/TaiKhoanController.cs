@@ -17,7 +17,7 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /TaiKhoan/
         public ActionResult Index()
         {
-            return View(db.Lienhes.ToList());
+            return View(db.Khachhangs.ToList());
         }
 
         // GET: /TaiKhoan/Details/5
@@ -27,7 +27,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lienhe nguoidung = db.Lienhes.Find(id);
+            Khachhang nguoidung = db.Khachhangs.Find(id);
             if (nguoidung == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="id,Ho,Ten,Tuoi,Ngaysinh,SDT,Diachi,Gioitinh")] Lienhe nguoidung)
+        public ActionResult Create([Bind(Include = "id,Ho,Ten,Tuoi,Ngaysinh,SDT,Diachi,Gioitinh")] Khachhang nguoidung)
         {
             if (ModelState.IsValid)
             {
-                db.Lienhes.Add(nguoidung);
+                db.Khachhangs.Add(nguoidung);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lienhe nguoidung = db.Lienhes.Find(id);
+            Khachhang nguoidung = db.Khachhangs.Find(id);
             if (nguoidung == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Ho,Ten,Tuoi,Ngaysinh,SDT,Diachi,Gioitinh")] Lienhe nguoidung)
+        public ActionResult Edit([Bind(Include = "id,Ho,Ten,Tuoi,Ngaysinh,SDT,Diachi,Gioitinh")] Khachhang nguoidung)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Lienhe nguoidung = db.Lienhes.Find(id);
+            Khachhang nguoidung = db.Khachhangs.Find(id);
             if (nguoidung == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace PhuTungXeMay2019.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Lienhe nguoidung = db.Lienhes.Find(id);
-            db.Lienhes.Remove(nguoidung);
+            Khachhang nguoidung = db.Khachhangs.Find(id);
+            db.Khachhangs.Remove(nguoidung);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

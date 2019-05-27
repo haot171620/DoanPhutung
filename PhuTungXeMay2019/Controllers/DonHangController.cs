@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhuTungXeMay2019.Models;
+using System.Transactions;
 
 namespace PhuTungXeMay2019.Controllers
 {
@@ -17,7 +18,7 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /DonHang/
         public ActionResult Index()
         {
-            var model = db.DonHangs;
+            var model = db.Donhangs;
             return View(model.ToList());
         }
 
@@ -28,7 +29,7 @@ namespace PhuTungXeMay2019.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DonHang model = db.DonHangs.Find(id);
+            Donhang model = db.Donhangs.Find(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -47,39 +48,51 @@ namespace PhuTungXeMay2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DonHang model)
+        public ActionResult Create(Donhang model)
         {
+            ValidateDonhang(model);
             if (ModelState.IsValid)
             {
-                db.DonHangs.Add(model);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                using (var scope = new TransactionScope())
+                {
+                    // add model to database
+                    db.Donhangs.Add(model);
+                    db.SaveChanges();
+                    // save file to App_Data
+                    var path = Server.MapPath("~/App_Data");
+                    path = System.IO.Path.Combine(path, model.IdDonhang.ToString());
+                    Request.Files["Image"].SaveAs(path);
+                    // accept all and persistence
+                    scope.Complete();
+                    return RedirectToAction("Index");
+                }
             }
 
-            return View(model);
-        }
+                return View(model);
+            }
+        
 
         // GET: /DonHang/Edit/5
         public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonHang model = db.DonHangs.Find(id);
+            var model = db.Donhangs.Find(id);
             if (model == null)
-            {
                 return HttpNotFound();
-            }
             return View(model);
         }
+        private void ValidateDonhang(Donhang model)
+        {
+            if (model.Gia <= 0)
+                ModelState.AddModelError("Price", VLTError.PRICE_LESS_0);
+        }
+
 
         // POST: /DonHang/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(DonHang model)
+        public ActionResult Edit(Donhang model)
         {
             if (ModelState.IsValid)
             {
@@ -93,10 +106,10 @@ namespace PhuTungXeMay2019.Controllers
         // GET: /DonHang/Delete/5
         public ActionResult Delete(int id)
         {
-            var model = db.DonHangs.Find(id);
+            var model = db.Donhangs.Find(id);
             if (model == null)
                 return HttpNotFound();
-            db.DonHangs.Remove(model);
+            db.Donhangs.Remove(model);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -107,8 +120,8 @@ namespace PhuTungXeMay2019.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DonHang donhang = db.DonHangs.Find(id);
-            db.DonHangs.Remove(donhang);
+            Donhang donhang = db.Donhangs.Find(id);
+            db.Donhangs.Remove(donhang);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

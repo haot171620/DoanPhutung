@@ -12,13 +12,11 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Lienhe
+    public partial class Admin
     {
-        public int id { get; set; }
-        public string Tieude { get; set; }
-        public string Tenlh { get; set; }
+        public int Id { get; set; }
         public string Email { get; set; }
-        public int Sdt { get; set; }
-        public string Noidung { get; set; }
+        public string Tendangnhap { get; set; }
+        public string Matkhau { get; set; }
     }
 }
