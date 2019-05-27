@@ -32,11 +32,18 @@
 <body>
     <div class="slide_content_wrap">
         <h1 style="font-size:30px;">Xem Thông Tin Liên Hệ</h1>
-        <hr />
+        <!-- 1. Đoạn cần thêm -->
+        @using (Html.BeginForm("Index", "Link", FormMethod.Get))
+        {
+            <p>
+                Tìm Kiếm: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+            </p>
+        }
+        <!-- Kết thúc -->
+        <hr />    
     </div>
     <table id="table">
         <tr>
-            <th>IDContact</th>
             <th>Họ và Tên</th>
             <th>Tiêu Đề Liên Hệ</th>
             <th>Nội Dung Liên Hệ</th>
@@ -46,9 +53,6 @@
     
     @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.idContact)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tenNguoidung)
             </td>

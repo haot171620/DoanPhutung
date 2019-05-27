@@ -15,9 +15,20 @@ namespace PhuTungXeMay2019.Controllers
         private CsK23T2bEntities db = new CsK23T2bEntities();
 
         // GET: /Contact/
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+
             return View(db.Contacts.ToList());
+
+
+            var links = from l in db.Contacts 
+                        select l;
+            if (!String.IsNullOrEmpty(searchString)) 
+            {
+                links = links.Where(s => s.tenNguoidung.Contains(searchString)); 
+            }
+            return View(db.Contacts.ToList());
+
         }
 
         // GET: /Contact/Details/5
