@@ -1,4 +1,4 @@
-﻿@model PhuTungXeMay2019.Models.Sanpham
+﻿@model PhuTungXeMay2019.Models.SanPham
 
 @{
     ViewBag.Title = "Details";
@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Gia)
+            @Html.DisplayNameFor(model => model.Giatien)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Gia)
+            @Html.DisplayFor(model => model.Giatien)
         </dd>
 
         <dt>
@@ -51,28 +51,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Chitietsp)
+            @Html.DisplayNameFor(model => model.Chitiet)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Chitietsp)
+            @Html.DisplayFor(model => model.Chitiet)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nhasx)
-        </dt>
+        
 
-        <dd>
-            @Html.DisplayFor(model => model.Nhasx)
-        </dd>
+        
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nhacungcap)
-        </dt>
+        
 
-        <dd>
-            @Html.DisplayFor(model => model.Nhacungcap)
-        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.Hinhanh)
@@ -85,6 +77,14 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Idsp }) |
     @Html.ActionLink("Back to List", "Index")
+    @using (Html.BeginForm("addShoppingCart", "ShoppingCart", new { @Idsp = Model.Idsp }))
+    {
+         @Html.TextBox("txtSoLuong", 1, new { type = "number" })
+        <a href="@Url.Action("ShoppingCart", "ShoppingCart")">
+             <i class="fas fa-shopping-cart"></i><input type="submit" value="CHỌN MUA" id="btnGioHang" class="btn btn-primary btn-lg" />
+        </a>
+    }
+    
 </p>
