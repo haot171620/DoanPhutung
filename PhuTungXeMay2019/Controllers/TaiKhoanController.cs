@@ -10,107 +10,107 @@ using PhuTungXeMay2019.Models;
 
 namespace PhuTungXeMay2019.Controllers
 {
-    public class ContactController : Controller
+    public class TaiKhoanController : Controller
     {
         private CsK23T2bEntities db = new CsK23T2bEntities();
 
-        // GET: /Contact/
+        // GET: /TaiKhoan/
         public ActionResult Index()
         {
-            return View(db.CONTACTs.ToList());
+            return View(db.Lienhes.ToList());
         }
 
-        // GET: /Contact/Details/5
+        // GET: /TaiKhoan/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONTACT contact = db.CONTACTs.Find(id);
-            if (contact == null)
+            Lienhe nguoidung = db.Lienhes.Find(id);
+            if (nguoidung == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(nguoidung);
         }
 
-        // GET: /Contact/Create
+        // GET: /TaiKhoan/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Contact/Create
+        // POST: /TaiKhoan/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="idContact,tenContact,noidungContact,idNguoidung,tenNguoidung,hinhanhNguoidung,gioitinh,diachi,sdt,ghichu")] CONTACT contact)
+        public ActionResult Create([Bind(Include="id,Ho,Ten,Tuoi,Ngaysinh,SDT,Diachi,Gioitinh")] Lienhe nguoidung)
         {
             if (ModelState.IsValid)
             {
-                db.CONTACTs.Add(contact);
+                db.Lienhes.Add(nguoidung);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contact);
+            return View(nguoidung);
         }
 
-        // GET: /Contact/Edit/5
+        // GET: /TaiKhoan/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONTACT contact = db.CONTACTs.Find(id);
-            if (contact == null)
+            Lienhe nguoidung = db.Lienhes.Find(id);
+            if (nguoidung == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(nguoidung);
         }
 
-        // POST: /Contact/Edit/5
+        // POST: /TaiKhoan/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="idContact,tenContact,noidungContact,idNguoidung,tenNguoidung,hinhanhNguoidung,gioitinh,diachi,sdt,ghichu")] CONTACT contact)
+        public ActionResult Edit([Bind(Include = "id,Ho,Ten,Tuoi,Ngaysinh,SDT,Diachi,Gioitinh")] Lienhe nguoidung)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
+                db.Entry(nguoidung).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contact);
+            return View(nguoidung);
         }
 
-        // GET: /Contact/Delete/5
+        // GET: /TaiKhoan/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CONTACT contact = db.CONTACTs.Find(id);
-            if (contact == null)
+            Lienhe nguoidung = db.Lienhes.Find(id);
+            if (nguoidung == null)
             {
                 return HttpNotFound();
             }
-            return View(contact);
+            return View(nguoidung);
         }
 
-        // POST: /Contact/Delete/5
+        // POST: /TaiKhoan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CONTACT contact = db.CONTACTs.Find(id);
-            db.CONTACTs.Remove(contact);
+            Lienhe nguoidung = db.Lienhes.Find(id);
+            db.Lienhes.Remove(nguoidung);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

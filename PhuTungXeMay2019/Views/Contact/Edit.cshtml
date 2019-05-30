@@ -1,4 +1,4 @@
-﻿@model PhuTungXeMay2019.Models.Contact
+﻿@model PhuTungXeMay2019.Models.CONTACT
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,7 +23,7 @@
             
             <hr />
             @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.Idcontact)
+            @Html.HiddenFor(model => model.idContact)
             <div class="form-group ">
                 <label>Họ Và Tên</label>
                 <input type="text" class="form-control"

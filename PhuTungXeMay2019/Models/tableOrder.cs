@@ -10,10 +10,16 @@
 namespace PhuTungXeMay2019.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class tableOrder
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int idSP { get; set; }
+        public string tenSP { get; set; }
+        public byte[] hinhSP { get; set; }
+        public Nullable<int> dongiaSP { get; set; }
+        public Nullable<int> soluongSP { get; set; }
+        public Nullable<int> thanhtien { get; set; }
+        public string ghichu { get; set; }
     }
 }

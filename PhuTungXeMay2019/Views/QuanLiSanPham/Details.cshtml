@@ -1,9 +1,7 @@
-﻿@model PhuTungXeMay2019.Models.SanPham
+﻿@model PhuTungXeMay2019.Models.Sanpham
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutManager.cshtml";
-    
 }
 
 <h2>Details</h2>
@@ -29,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Giatien)
+            @Html.DisplayNameFor(model => model.Gia)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Giatien)
+            @Html.DisplayFor(model => model.Gia)
         </dd>
 
         <dt>
@@ -53,20 +51,28 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Chitiet)
+            @Html.DisplayNameFor(model => model.Chitietsp)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Chitiet)
+            @Html.DisplayFor(model => model.Chitietsp)
         </dd>
 
-        
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhasx)
+        </dt>
 
-        
+        <dd>
+            @Html.DisplayFor(model => model.Nhasx)
+        </dd>
 
-        
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhacungcap)
+        </dt>
 
-        
+        <dd>
+            @Html.DisplayFor(model => model.Nhacungcap)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Hinhanh)
@@ -79,7 +85,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Idsp }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
-    
 </p>

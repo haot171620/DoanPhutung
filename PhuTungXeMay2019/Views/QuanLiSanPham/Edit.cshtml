@@ -1,8 +1,7 @@
-﻿@model PhuTungXeMay2019.Models.SanPham
+﻿@model PhuTungXeMay2019.Models.Sanpham
 
 @{
     ViewBag.Title = "Edit";
-    
 }
 
 <h2>Chỉnh sửa sản phẩm</h2>
@@ -15,7 +14,7 @@
         
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.IdSp)
+        @Html.HiddenFor(model => model.id)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Tensp,"Tên sản phẩm", new { @class = "control-label col-md-2" })

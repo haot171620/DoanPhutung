@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="nullCart" xml:space="preserve">
-    <value>khong co gio hang</value>
-  </data>
   <data name="PRICE_LESS_0" xml:space="preserve">
     <value>So luong phai lon hon 0</value>
   </data>

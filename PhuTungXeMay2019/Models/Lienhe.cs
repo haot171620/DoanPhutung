@@ -12,12 +12,13 @@ namespace PhuTungXeMay2019.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Lienhe
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public string Tieude { get; set; }
+        public string Tenlh { get; set; }
+        public string Email { get; set; }
+        public int Sdt { get; set; }
+        public string Noidung { get; set; }
     }
 }
