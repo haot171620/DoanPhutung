@@ -161,6 +161,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ChitietsanphamController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
@@ -548,11 +549,12 @@
     <Content Include="Views\ChiTietSanPham\Edit.cshtml" />
     <Content Include="Views\ChiTietSanPham\Index.cshtml" />
     <Content Include="Views\ChiTietSanPham\chitietsanpham.cshtml" />
-    <Content Include="Views\ShoppingCart\_PatialSoLuong.cshtml" />
     <Content Include="Views\ShoppingCart\_PartialTongTIen.cshtml" />
+    <Content Include="Views\ShoppingCart\SoluongPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>

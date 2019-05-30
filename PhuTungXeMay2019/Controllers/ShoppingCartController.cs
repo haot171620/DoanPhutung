@@ -133,11 +133,12 @@ namespace PhuTungXeMay2019.Controllers
             List<Cart1> lstCart = GetCart();
             return View(lstCart);
         }
-        public ActionResult _PartialSoLuong()
+        public ActionResult SoluongPartial()
         {
             if (SumAmount() == 0)
             {
                 ViewBag.SumAmount = 0;
+                ViewBag.TongSoLuong = 0;
                 ViewBag.SumPrice = 0;
                 return PartialView();
             }

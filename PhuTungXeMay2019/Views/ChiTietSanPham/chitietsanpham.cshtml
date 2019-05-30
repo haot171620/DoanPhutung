@@ -3,81 +3,55 @@
     ViewBag.Title = "chitietsanpham";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
-<div>
-    <h4>Sanpham</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-           Ten
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tensp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Loaisp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Loaisp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Giatien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Giatien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Soluong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Soluong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Xuatxu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Xuatxu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Chitiet)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Chitiet)
-        </dd>
 
 
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Tên Sản Phẩm</th>
+            <th scope="col">Loại Sản Phẩm</th>
+            <th scope="col">Giá Tiền</th>
+            <th scope="col">Số Lượng</th>
+            <th scope="col">Xuất Xứ</th>
+            <th scope="col">Chi tiết</th>
+            <th scope="col">Hình Ảnh</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Tensp)</td>
+            <td>@Html.DisplayFor(model => model.Loaisp)</td>
 
+            <td>@Html.DisplayFor(model => model.Giatien)</td>
+            <td>@Html.DisplayFor(model => model.Soluong)</td>
+            <td>@Html.DisplayFor(model => model.Xuatxu)</td>
+            <td>@Html.DisplayFor(model => model.Chitiet)</td>
+            <td>
+                <img style="width: 63px; height: 71px;" src=@Url.Content("~/QuanLiSanPham/Image/"+Model.Idsp) width="241.09" height="241.09" alt="" />
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
 
-
-
-
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hinhanh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hinhanh)
-        </dd>
-
-    </dl>
+<div id="muahang" style="margin-left:60%">
     @using (Html.BeginForm("addShoppingCart", "ShoppingCart", new { @Idsp = Model.Idsp }))
     {
         @Html.TextBox("txtSoLuong", 1, new { type = "number" })
-            <a href="@Url.Action("ShoppingCart", "ShoppingCart")">
-                <i class="fas fa-shopping-cart"></i><input type="submit" value="CHỌN MUA" id="btnGioHang" class="btn btn-primary btn-lg" />
-            </a>
+        <a href="@Url.Action("ShoppingCart", "ShoppingCart")">
+            <input type="submit" value="CHỌN MUA" id="btnGioHang" class="btn btn-primary btn-lg" />
+        </a>
     }
 </div>
+
+
+
+
+
+
+
+
+
+
+
