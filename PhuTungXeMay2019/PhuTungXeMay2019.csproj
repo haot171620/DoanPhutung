@@ -161,13 +161,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChitietsanphamController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuanLiSanPhamController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
-    <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,9 +185,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Khachhang.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,6 +201,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -538,8 +540,16 @@
     <Content Include="Views\DonHang\Edit.cshtml" />
     <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\QuanLiSanPham\Search.cshtml" />
-    <Content Include="Views\ShoppingCart\View1.cshtml" />
+    <Content Include="Views\ShoppingCart\ShoppingCart.cshtml" />
     <Content Include="Views\Shared\_LayoutManager.cshtml" />
+    <Content Include="Views\ChiTietSanPham\Create.cshtml" />
+    <Content Include="Views\ChiTietSanPham\Delete.cshtml" />
+    <Content Include="Views\ChiTietSanPham\Details.cshtml" />
+    <Content Include="Views\ChiTietSanPham\Edit.cshtml" />
+    <Content Include="Views\ChiTietSanPham\Index.cshtml" />
+    <Content Include="Views\ChiTietSanPham\chitietsanpham.cshtml" />
+    <Content Include="Views\ShoppingCart\_PatialSoLuong.cshtml" />
+    <Content Include="Views\ShoppingCart\_PartialTongTIen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

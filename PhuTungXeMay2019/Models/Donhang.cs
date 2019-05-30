@@ -19,6 +19,8 @@ namespace PhuTungXeMay2019.Models
         public string Chitiet { get; set; }
         public string Loaihinhthanhtoan { get; set; }
         public Nullable<int> Gia { get; set; }
+        public string Email { get; set; }
+        public string Diachi { get; set; }
         public Nullable<int> Tongtien { get; set; }
     
         public virtual Dathang Dathang { get; set; }

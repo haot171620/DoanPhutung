@@ -61,6 +61,15 @@ namespace PhuTungXeMay2019 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to khong co gio hang.
+        /// </summary>
+        internal static string nullCart {
+            get {
+                return ResourceManager.GetString("nullCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to So luong phai lon hon 0.
         /// </summary>
         internal static string PRICE_LESS_0 {

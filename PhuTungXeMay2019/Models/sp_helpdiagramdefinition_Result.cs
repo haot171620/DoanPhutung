@@ -10,21 +10,10 @@
 namespace PhuTungXeMay2019.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Khachhang
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public Khachhang()
-        {
-            this.Dathangs = new HashSet<Dathang>();
-        }
-    
-        public int Idkhachhang { get; set; }
-        public string Email { get; set; }
-        public string Tendangnhap { get; set; }
-        public string Matkhau { get; set; }
-        public string Diachi { get; set; }
-    
-        public virtual ICollection<Dathang> Dathangs { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

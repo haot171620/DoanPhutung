@@ -7,10 +7,11 @@
 }
 <h2 class="head">Sản phẩm</h2>
 <div class="top-box">
+    @foreach (var item in Model)
+{
     <div class="col_1_of_3 span_1_of_3">
-       @foreach (var item in Model)
-                {
-         <a href="x14brinkhelmet.html">
+      
+         <a href="@Url.Action("chitietsanpham", "Chitietsanpham", new { @Idsp = item.Idsp })">
             <div class="inner_content clearfix">
                
                 <div class="product_image">
@@ -32,9 +33,10 @@
             </div>
                
         </a>
-                }
+
 
     </div>
+                }
                 
    
     <div class="clear"></div>

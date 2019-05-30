@@ -27,8 +27,9 @@ namespace PhuTungXeMay2019.Models
         public Nullable<System.DateTime> Ngaymua { get; set; }
         public string Diachi { get; set; }
         public string Email { get; set; }
+        public string SDT { get; set; }
+        public string TenKh { get; set; }
     
-        public virtual Khachhang Khachhang { get; set; }
         public virtual SanPham SanPham { get; set; }
         public virtual ICollection<Donhang> Donhangs { get; set; }
     }

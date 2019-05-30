@@ -16,6 +16,17 @@ namespace PhuTungXeMay2019.Controllers
         CsK23T2bEntities db = new CsK23T2bEntities();
 
         // GET: /DonHang/
+        public List<Cart1> GetCart()
+        {
+            List<Cart1> lstcart = Session["GioHang"] as List<Cart1>;
+            if (lstcart == null)
+            {
+                // Neu gio hang chua ton tai thi minh tien hang tao gio hang
+                lstcart = new List<Cart1>();
+                Session["GioHang"] = lstcart;
+            }
+            return lstcart;
+        }
         public ActionResult Index()
         {
             var model = db.Donhangs;
@@ -47,29 +58,45 @@ namespace PhuTungXeMay2019.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Donhang model)
+
+        public ActionResult Create(Dathang Dathang)
         {
-            ValidateDonhang(model);
             if (ModelState.IsValid)
             {
-                using (var scope = new TransactionScope())
+                List<Cart1> cart = GetCart();
+                if (cart == null)
                 {
-                    // add model to database
-                    db.Donhangs.Add(model);
-                    db.SaveChanges();
-                    // save file to App_Data
-                    var path = Server.MapPath("~/App_Data");
-                    path = System.IO.Path.Combine(path, model.IdDonhang.ToString());
-                    Request.Files["Image"].SaveAs(path);
-                    // accept all and persistence
-                    scope.Complete();
-                    return RedirectToAction("Index");
+                    ModelState.AddModelError("Order_ID", Resource1.nullCart);
+
                 }
+                else
+                {
+                    Dathang.Ngaymua = DateTime.Now;
+                    db.Dathangs.Add(Dathang);
+
+
+                    foreach (var item in cart)
+                    {
+                        Donhang Donhang = new Donhang();
+                        Donhang.IdDonhang = Dathang.Iddonhang;
+                        Donhang.Gia = Convert.ToInt32(item.thanhTien);
+                        db.Donhangs.Add(Donhang);
+                        Donhang.Tongtien += Convert.ToInt32(item.thanhTien);
+                        db.Donhangs.Add(Donhang);
+                        SanPham product = db.SanPhams.Find(item.Idsp);
+                        db.Entry(product).State = EntityState.Modified;
+                    }
+                    db.SaveChanges();
+                    Session["GioHang"] = null;
+
+                    return RedirectToAction("Index", "Home");
+                }
+
             }
 
-                return View(model);
-            }
+
+            return View("~/Views/CheckOut/Index.cshtml");
+        }
         
 
         // GET: /DonHang/Edit/5

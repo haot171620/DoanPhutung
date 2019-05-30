@@ -38,28 +38,21 @@ namespace PhuTungXeMay2019.Controllers
             // Lấy ra session giỏ hàng
             List<Cart1> lstCart = GetCart();
             // Kiểm tra sản phẩm này đã tồn tại trong session[giohang] chưa
-            Cart1 sp = lstCart.Find(n => n.idSp == Idsp);
+            Cart1 sp = lstCart.Find(n => n.Idsp == Idsp);
             ViewBag.TX = txtSoLuong;
             if (sp == null)
             {
-
-
-
                     sp = new Cart1(Idsp);
                     sp.soluong = txtSoLuong;
                     lstCart.Add(sp);
-
-
-                return RedirectToAction("Details", "QuanliSanPham", new { sanpham.Idsp });
+                    return RedirectToAction("chitietsanpham", "Chitietsanpham", new { sanpham.Idsp });
             }
             else
             {              
                     sp.soluong = sp.soluong + txtSoLuong;
 
-                    return RedirectToAction("Details", "QuanliSanPham", new { sanpham.Idsp });
+                    return RedirectToAction("chitietsanpham", "Chitietsanpham", new { sanpham.Idsp });
             }
-
-
         }
         public ActionResult DeleteCart(int idSp)
         {
@@ -73,11 +66,11 @@ namespace PhuTungXeMay2019.Controllers
             // lay gio hang ra tu session
             List<Cart1> lstCart = GetCart();
             // Kiem tra san pham co ton tai tron session
-            Cart1 sp = lstCart.SingleOrDefault(n => n.idSp == idSp);
+            Cart1 sp = lstCart.SingleOrDefault(n => n.Idsp == idSp);
             // Neu ton tai thi cho sua so luong
             if (sp != null)
             {
-                lstCart.RemoveAll(n => n.idSp == idSp);
+                lstCart.RemoveAll(n => n.Idsp == idSp);
             }
             if (lstCart.Count == 0)
             {
@@ -140,5 +133,18 @@ namespace PhuTungXeMay2019.Controllers
             List<Cart1> lstCart = GetCart();
             return View(lstCart);
         }
+        public ActionResult _PartialSoLuong()
+        {
+            if (SumAmount() == 0)
+            {
+                ViewBag.SumAmount = 0;
+                ViewBag.SumPrice = 0;
+                return PartialView();
+            }
+            ViewBag.TongSoLuong = SumAmount();
+            ViewBag.TongTien = SumPrice();
+            return PartialView();
+        }
 	}
+
 }
