@@ -4,10 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
+
+
     <style>
         #table {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -28,40 +27,46 @@
 
 
     </style>
-</head>
+
 <body>
     <div class="slide_content_wrap">
         <h1 style="font-size:30px;">Xem Thông Tin Liên Hệ</h1>
-        <hr />
+        <!-- Đoạn cần thêm -->
+            @using (Html.BeginForm())
+        {
+
+            <p>
+                Tìm kiếm: @Html.TextBox("SearchString")
+                <button class="btn btn-primary" style="margin-bottom:12px" value="Filter">Tìm kiếm</button>
+            </p>
+        }
+        <!-- Kết thúc -->
+        <hr />  
     </div>
-    <table id="table">
+    <table class="table table-bordered table-condensed table-hover" >
         <tr>
-            <th>IDContact</th>
             <th>Họ và Tên</th>
-            <th>Tiêu Đề Liên Hệ</th>
-            <th>Nội Dung Liên Hệ</th>
+            <th>Email</th>
             <th>Số Điện Thoại</th>
+            <th>Nội Dung Liên Hệ</th>
             <th></th>
         </tr>
     
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.idContact)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.tenNguoidung)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.tenContact)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.sdt)
+            </td> 
             <td>
                 @Html.DisplayFor(modelItem => item.noidungContact)
             </td>         
-            <td>
-                @Html.DisplayFor(modelItem => item.sdt)
-            </td>         
+                    
             <td>
                 @Html.ActionLink("Sửa", "Edit", new { id=item.idContact }) |
                 @Html.ActionLink("Xem", "Details", new { id=item.idContact }) |

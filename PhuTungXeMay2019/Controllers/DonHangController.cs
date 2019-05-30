@@ -19,6 +19,8 @@ namespace PhuTungXeMay2019.Controllers
         {
             var model = db.DonHangs;
             return View(model.ToList());
+          
+            return View(model);
         }
 
         // GET: /DonHang/Details/5
